@@ -1,7 +1,6 @@
 package com.game.seabattle.model.gameplay.ship;
 
 import com.game.seabattle.model.gameplay.ship.cell.ShipCell;
-import com.game.seabattle.model.gameplay.ship.cell.ShipCellStates;
 
 public abstract class Ship {
 
@@ -24,11 +23,11 @@ public abstract class Ship {
 		this.state = state;
 	}
 	
-	public ShipStates getState() {
-		return state;
+	public ShipCell[] getCells() {
+		return cells;
 	}
 	
-	public void setCellState(int x, int y, ShipCellStates state) {
-		
+	public boolean isDestroyed() {
+		return state == ShipStates.DESTROYED;
 	}
 }

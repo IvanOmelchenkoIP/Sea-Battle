@@ -1,7 +1,9 @@
 package com.game.seabattle.model.game;
 
+import java.util.ArrayList;
+
 import com.game.seabattle.model.gameplay.board.Board;
-import com.game.seabattle.model.gameplay.ship.ShipsCollection;
+import com.game.seabattle.model.gameplay.ship.Ship;
 import com.game.seabattle.model.player.Player;
 
 public class Game {
@@ -10,8 +12,8 @@ public class Game {
 	private Player player2;
 	private Board player1Board;
 	private Board player2Board;
-	private ShipsCollection player1Ships;
-	private ShipsCollection player2Ships;
+	private ArrayList<Ship> player1Ships;
+	private ArrayList<Ship> player2Ships;
 	
 	
 	public void setPlayer1(Player player) {
@@ -46,19 +48,19 @@ public class Game {
 		return player2Board;
 	}
 	
-	public void setPlayer1Ships(ShipsCollection ships) {
+	public void setPlayer1Ships(ArrayList<Ship> ships) {
 		player1Ships = ships;
 	}
 	
-	public ShipsCollection getPlayer1Ships() {
+	public ArrayList<Ship> getPlayer1Ships() {
 		return player1Ships;
 	}
 	
-	public void setPlayer2Ships(ShipsCollection ships) {
+	public void setPlayer2Ships(ArrayList<Ship> ships) {
 		player2Ships = ships;
 	}
 	
-	public ShipsCollection getPlayer2Ships() {
+	public ArrayList<Ship> getPlayer2Ships() {
 		return player2Ships;
 	}
 }
