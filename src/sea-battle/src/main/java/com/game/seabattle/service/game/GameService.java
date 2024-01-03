@@ -24,11 +24,22 @@ public class GameService {
 	@Autowired 
 	private BoardService boardService;
 
-	public void newGame(Player player) {
+	public String newGame(Player player) {
 		Game game = new Game();
 		game.setPlayer1Board(new Board());
 		game.setPlayer1(player);
-		db.addGame(game);
+		String id = db.addGame(game);
+		return id;
+	}
+	
+	public String newGame(Player player1, Player player2) {
+		Game game = new Game();
+		game.setPlayer1Board(new Board());
+		game.setPlayer1(player1);
+		game.setPlayer2Board(new Board());
+		game.setPlayer2(player2);
+		String id = db.addGame(game);
+		return id;
 	}
 
 	public void connectPlayer(String id, Player player) throws GameInvalidException, GameFullException {

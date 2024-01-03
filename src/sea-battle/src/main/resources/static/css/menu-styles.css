@@ -9,16 +9,12 @@
 .menu-container {
 	width: 100%;
 	height: 100%;
-	display: flex;
+	display: none;
 	align-items: center;
 }
 
 .main-menu {
 	background: #449DD1;
-}
-
-.session-menu {
-	background: #49516F;
 }
 
 .main-menu-list {
@@ -44,12 +40,42 @@ ul {
 }
 
 .menu-item {
-
 	width: 100%;
 }
 
 .menu-item span {
 	font-size: 1.2rem;
+}
+
+/*-----------------------*/
+
+.join-menu {
+	background: #49516F;
+	flex-direction: column;
+}
+
+.title-wrapper {
+	display: flex;
+	height: 30%;
+}
+
+.payload-wrapper {
+	display: flex;
+	height: 70%;
+}
+
+.buttons-wrapper {
+	display: flex;
+	flex-grow: 1;
+}
+
+.title {
+	margin-top: 3rem;
+}
+
+.title span {
+	color: white;
+	font-size: 2rem;
 }
 
 /*-----------------------*/

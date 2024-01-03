@@ -18,9 +18,10 @@ public class GamesInMemoryDBService {
 		return storage.getGame(id);
 	}
 	
-	public void addGame(Game game) {
+	public String addGame(Game game) {
 		String id = UUID.randomUUID().toString();
 		storage.addGame(id, game);
+		return id;
 	}
 	
 	public void removeGame(String id) {

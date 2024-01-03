@@ -1,74 +1,73 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>Sea Battle</title>
 <link rel="stylesheet" href="../css/css-general.css">
-<link rel="stylesheet" href="../css/menu.css">
+<link rel="stylesheet" href="../css/menu-styles.css">
+<script defer type="module" src="../js/listener/menu-listeners.js"></script>
 </head>
+
 <body>
 	<div class="body-container">
 	
 		<div class="menu-container-wrapper">
 		
-			<div class="menu-container main-menu">
+			<div class="menu-container main-menu display-flex">
 				<div class="main-menu-list">
 					<ul>
 						<li class="menu-item-wrapper">
-							<button class="menu-item" id="new_bot">
+							<button class="menu-item" id="new-bot">
 								<span>New Local Singleplayer Game</span>
 							</button>
 						</li>
 						<li class="menu-item-wrapper">
-							<button class="menu-item" id="new_local">
-								<span>New Local Multipleyer Game</span>
+							<button class="menu-item" id="new-local">
+								<span>New Local Multiplayer Game</span>
 							</button>
 						</li>
 						<li class="menu-item-wrapper">
-							<button class="menu-item"  id="new_online">
+							<button class="menu-item"  id="new-online">
 								<span>New Online Game</span>
 							</button>
 						</li>
 						<li class="menu-item-wrapper">
-							<button class="menu-item" id="join_online">
+							<button class="menu-item" id="join-online">
 								<span>Join Online Game</span>
 							</button>
 						</li>
 					</ul>
 				</div>
 			</div>
-		
-			<!-- <div class="menu-container session-menu">
-				<div class="session-params new-bot">
-					<div class="title-container">Create New Local Singleplayer Game</div>
-					<div class="settings-container">
-						
-					</div>
-					<div class="buttons-container">
-						<button class="back-button" id="back">
-							<span>Back</span>
-						</button>
-						<button class="" id="create">
-							<span>Create</span>
-						</button>	
-					</div>
-				</div> -->
-					<!-- -
-					<div class="container-payload new-online">
-						<div class="title-container">Create New Online Game</div>
-						<div class="settings-container"></div>
-					</div>
-					
-					<div class="container-palyload join-online">
-						<div class="title-container">Join Online Game</div>
-						<div class="settings-container"></div>
-					</div>
-					
-						
-			</div>-->
 			
-		</div>	
-	
+			<div class="menu-container join-menu">
+				<div class="title-wrapper">
+					<div class=title>
+						<span>Connect to a game</span>
+					</div>
+				</div>
+				<div class="payload-wrapper">
+					<div class="game-input-wrapper">
+						<input class="game-input" name="game-id-input">
+					</div>
+					<div class="input-message-wrapper">
+						<div class="input-message">
+							<span class="input-message-err-field"></span>
+						</div>
+					</div>
+				</div>
+				<div class="buttons-wrapper">
+					<button id="back-to-menu">
+						<span>Back</span>
+					</button>
+					<button id="join-by-id">
+						<span>Join</span>
+					</button>
+				</div>
+			</div>
+			
+		</div>			
 	</div>
 </body>
 </html>

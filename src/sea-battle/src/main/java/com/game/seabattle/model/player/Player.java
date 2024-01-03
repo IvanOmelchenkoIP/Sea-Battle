@@ -2,7 +2,7 @@ package com.game.seabattle.model.player;
 
 public class Player {
 
-	private String id;
+	protected String id;
 	
 	public Player(String id) {
 		this.id = id;
