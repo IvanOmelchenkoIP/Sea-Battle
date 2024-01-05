@@ -11,10 +11,18 @@
 	height: 100%;
 	display: none;
 	align-items: center;
+	justify-content: center;
 }
 
 .main-menu {
 	background: #449DD1;
+	flex-direction: column;
+}
+
+.main-menu-title {
+	color: #effcf8;
+	font-size: 2.8rem;
+	margin-bottom: 1rem;
 }
 
 .main-menu-list {

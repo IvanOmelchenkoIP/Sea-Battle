@@ -14,6 +14,14 @@ const swapToMainMenuHandler = () => {
 	domSelector.document.selectFirstByClass("main-menu").classList.add("display-flex");
 }
 
+const createBotGameHandler = () => {
+	console.log("New game with bot");
+}
+
+const createLocalGameHandler = () => {
+	console.log("New local game");
+}
+
 const createOnlineGameHandler = () => {
 	createOnlineGame();
 }
@@ -23,4 +31,4 @@ const joinOnlineGameHandler = () => {
 	joinOnlineGame(id);
 }
 
-export { createOnlineGameHandler, joinOnlineGameHandler, swapToJoinMenuHandler, swapToMainMenuHandler };
+export { createOnlineGameHandler, joinOnlineGameHandler, createBotGameHandler, createLocalGameHandler, swapToJoinMenuHandler, swapToMainMenuHandler };

@@ -19,6 +19,7 @@ const game = {
 	player2: null,
 	gamemode: null,
 	turn: null,
+	BOARD_SIZE: 10,
 	clear: () => {
 		game.gameId = null;
 		game.player1 = null;

@@ -2,34 +2,36 @@
 
 import domSelector from "../utils/html-utils/html-utils.js";
 import context from "../context/context.js";
-import changeShipsDirectionHandler from "../listener-handlers/board/change-direction-handler.js";
-import placementShipMousedownHandler from "../listener-handlers/board/placement-ship-handlers.js";
-import cellLeaveHoverHandler from "../listener-handlers/board/cell-leave-hover-handler.js";
-import cellEnterHoverHandler from "../listener-handlers/board/cell-enter-hover-handler.js";
+import changeDirectionHandler from "../listener-handlers/board/change-direction-handler.js";
+import placeShipProcessor from "../listener-handlers/board/place-ship-handlers.js";
+import cellHoverProcessor from "../listener-handlers/board/cell-hover-handler.js";
+import bodyClickHandler from "../listener-handlers/board/body-click-handler.js";
 
+(() => {
+	context.shipPlacement.getNew();
+})();
+
+(() => {
+	domSelector.document.selectFirstByClass("board-container").addEventListener("click", bodyClickHandler);
+})();
 
 (() => {
 	const changeDirectionBtns = domSelector.document.selectAllByClass("direction-changer");
 	for (const button of changeDirectionBtns) {
-		button.addEventListener("click", () => {
-			context.shipPlacement.getNew();
-
-			changeShipsDirectionHandler();
-		})
+		button.addEventListener("click", changeDirectionHandler);
 	}
 })();
 
 (() => {
 	const ships = domSelector.document.selectAllByClass("ship-selector");
-	for (const placeShip of ships) {
-		placeShip.addEventListener("mousedown", placementShipMousedownHandler);
+	for (const ship of ships) {
+		placeShipProcessor(ship);
 	}
 })();
 
 (() => {
 	const cells = domSelector.document.selectAllByClass("cell");
 	for (const cell of cells) {
-		cell.addEventListener("mouseenter", cellEnterHoverHandler)
-		cell.addEventListener("mouseout", cellLeaveHoverHandler);
+		cellHoverProcessor(cell);
 	}
 })();

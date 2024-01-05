@@ -80,7 +80,7 @@
 }
 
 .cell.ship {
-	
+	background: #449DD1
 }
 
 .cell.damaged {
@@ -127,6 +127,14 @@
  	margin: 0 auto;
 }
 
+.ship-selector.selected {
+	border: 3px solid #e7faf4; 
+}
+
+.ship-selected:not(.blocked):hover {
+	border: 3px solid #e7faf4; 
+}
+
 .ship-selector.size-4.vertical {
 	grid-template-columns: 50px; 
  	grid-template-rows: 50px 50px 50px 50px;
@@ -170,6 +178,10 @@
 .ship-cell {
 	border: 1px solid #e7faf4;
 	background: #449DD1;
+}
+
+.ship-selector.blocked > .ship-cell {
+	background: #BEBDB8;
 }
 
 .label-left {

@@ -8,37 +8,28 @@ const DIRECTIONS = {
 class ShipPlacementContextClass {
 	constructor () {
 		this.left = {
-			"size-1": 4,
-			"size-2": 3, 
-			"size-3": 2,
-			"size-4": 1
+			1: 4,
+			2: 3, 
+			3: 2,
+			4: 1
 		};
-		this.ships = {};
+		this.ships = [];
 		this.DIRECTIONS = DIRECTIONS;
 		this.direction  = DIRECTIONS.HORIZONTAL;
-		this.isShipDragged = false;
 		this.shipParams = {
-			cell: null,
+			isSelected: false,
 			length: null,
-			initCoords: {x: null, y: null},
-			type: null,
+			coords: [],
+			ship: null,
 		};
-		this.copied = null;
-		this.placementCoords = [];
 	}
 	
-	addShip(size, data) {
-		const ship = {};
-		ship[size] = data;
-		this.ships.append(ship);
+	addShipCoords(coords) {
+		this.ships.push(coords);
 	}
 	
 	getShipsPlacement() {
 		return this.ships.toString();
-	}
-	
-	copy(ship) {
-		this.copied = JSON.parse(JSON.stringify(ship));
 	}
 }
 

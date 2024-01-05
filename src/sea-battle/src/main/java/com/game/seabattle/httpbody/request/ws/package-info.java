@@ -1,0 +1,1 @@
+package com.game.seabattle.httpbody.request.ws;
