@@ -1,11 +1,12 @@
 "use strict";
 
-import context from "../../context/context.js";
-import domSelector from "../../utils/html-utils/html-utils.js";
-import deleteWsClient from "../../ws/delete-client.js";
+import context from "../../../context/context.js";
+import domSelector from "../../../utils/html-utils/html-utils.js";
+import deleteWsClient from "../../delete-client.js";
 
 const parseBoard = (board) => {
-  const transformed = board.toString()
+  const transformed = board
+    .toString()
     .replaceAll("[[", "")
     .replaceAll("]]", "")
     .replaceAll("[", "")

@@ -57,6 +57,20 @@ public class GameService {
 		game.setPlayer2Ships(new ShipsCollection());
 		game.setPlayer2(player);
 	}
+	
+	public void parseShips(String gameId, String playerId, String json) throws GameInvalidException {
+		Game game = db.findGame(gameId);
+		if (game == null) {
+			throw new GameInvalidException("Game with id " + gameId + " does not exist!");
+		}
+		Board board;
+		if (game.getPlayer1().getId() == playerId) {
+			board = game.getPlayer1Board();
+		} else {
+			board = game.getPlayer2Board();
+		}
+		boardService.parseShips(board, json);
+	}
 
 	public void setShips(String gameId, String playerId, ShipsCollection ships) throws GameInvalidException {
 		Game game = db.findGame(gameId);
@@ -81,6 +95,7 @@ public class GameService {
 	private Board processPlayerMove(Point coords, Board board, ShipsCollection shipsCollection) {
 		boolean isHit = false;
 		Ship destroyedShip = null;
+		board.printShips();
 		Ship[] ships = shipsCollection.getShips();
 		System.out.println(ships);
 		for (Ship ship : ships) {

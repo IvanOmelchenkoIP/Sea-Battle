@@ -51,6 +51,7 @@ public class WsGameSessionController {
 		ShipsCollection ships = shipService.parseShips(request.getShips());
 		try {
 			gameService.setShips(request.getGameId(), playerId, ships);
+			gameService.parseShips(request.getGameId(), playerId, request.getShips());
 		} catch (GameInvalidException e) {
 			HttpResponseBody errorResponse = new HttpResponseBody(e.getMessage());
 			smt.convertAndSend("/topic/session/" + request.getGameId(), errorResponse);

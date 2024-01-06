@@ -2,7 +2,7 @@
 
 import context from "../../context/context.js";
 import domSelector from "../../utils/html-utils/html-utils.js";
-import postShipsPlaced from "../../ws/messages/post-ships-placed.js";
+import postShipsPlaced from "../../ws/post/post-ships-placed.js";
 
 const readyShipsProcessor = () => {
   if (context.game.in_progress) return;

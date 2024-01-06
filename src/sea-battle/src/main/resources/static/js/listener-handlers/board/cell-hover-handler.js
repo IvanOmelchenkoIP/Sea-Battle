@@ -202,7 +202,6 @@ const cellHoverProcessor = (cell) => {
       context.game.player2 != null &&
       context.game.turn == context.game.turns.PLAYER_2;
     if (context.game.in_progress && (player1 || player2)) {
-
       const personal = board.classList.contains("personal");
       const locked = board.classList.contains("locked");
       if (!personal && !locked) {

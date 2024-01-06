@@ -3,7 +3,7 @@
 import context from "../../context/context.js";
 import domSelector from "../../utils/html-utils/html-utils.js";
 import connectWsClient from "../../ws/connect-client.js";
-import postPlayerJoined from "../../ws/messages/post-player-joined.js";
+import postPlayerJoined from "../../ws/post/post-player-joined.js";
 
 const loadNewProcessor = () => {
   const gameId = context.game.gameId;

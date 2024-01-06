@@ -2,7 +2,7 @@
 
 import fetchUtil from "../../utils/fetch/fetch-util.js";
 
-const postMove = (gameId, playerId, x, y) => {
+const postPlayerMove = (gameId, playerId, x, y) => {
   fetchUtil.post({
     route: "http://localhost:8080/ws/move",
     data: {
@@ -14,4 +14,4 @@ const postMove = (gameId, playerId, x, y) => {
   });
 };
 
-export default postMove;
+export default postPlayerMove;

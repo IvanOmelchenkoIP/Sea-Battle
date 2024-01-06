@@ -1,7 +1,7 @@
 "use strict";
 
 import context from "../../context/context.js";
-import postMove from "../../ws/messages/post-move.js";
+import postPlayerMove from "../../ws/post/post-player-move.js";
 
 const moveProcessor = (cell) => {
   const x = cell.classList[2].split("-")[1];
@@ -9,7 +9,7 @@ const moveProcessor = (cell) => {
   const playerId = context.game.player1
     ? context.game.player1
     : context.game.player2;
-  postMove(context.game.gameId, playerId, x, y);
+    postPlayerMove(context.game.gameId, playerId, x, y);
 };
 
 export default moveProcessor;

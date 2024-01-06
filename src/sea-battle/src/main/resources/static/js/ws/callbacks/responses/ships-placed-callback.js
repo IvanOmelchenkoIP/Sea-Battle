@@ -9,7 +9,7 @@ const shipsPlacedCallback = (message) => {
   console.log(message.playerId);
   if (player1Id) {
     if (player1Id == message.playerId) {
-      context.game.player1_ready = true;
+      context.game.player1_reaEdy = true;
     } else {
       context.game.player2_ready = true;
     }
