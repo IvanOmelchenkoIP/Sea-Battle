@@ -6,32 +6,52 @@ import changeDirectionHandler from "../listener-handlers/board/change-direction-
 import placeShipProcessor from "../listener-handlers/board/place-ship-handlers.js";
 import cellHoverProcessor from "../listener-handlers/board/cell-hover-handler.js";
 import bodyClickHandler from "../listener-handlers/board/body-click-handler.js";
+import loadNewProcessor from "../listener-handlers/board/load-new-processor.js";
+import idCopyHandler from "../listener-handlers/board/id-copy-handler.js";
+import cancelGameHandler from "../listener-handlers/board/cancel-game-handler.js";
 
 (() => {
-	context.shipPlacement.getNew();
+  context.retrieve();
+  if (!context.game.in_progress) {
+    loadNewProcessor();
+  }
 })();
 
 (() => {
-	domSelector.document.selectFirstByClass("board-container").addEventListener("click", bodyClickHandler);
+  const copyers = domSelector.document.selectAllByClass("id-copyer");
+  for (const copyer of copyers) {
+    copyer.addEventListener("click", idCopyHandler);
+  }
 })();
 
 (() => {
-	const changeDirectionBtns = domSelector.document.selectAllByClass("direction-changer");
-	for (const button of changeDirectionBtns) {
-		button.addEventListener("click", changeDirectionHandler);
-	}
+  domSelector.document.selectById("cancel-game").addEventListener("click", cancelGameHandler);
 })();
 
 (() => {
-	const ships = domSelector.document.selectAllByClass("ship-selector");
-	for (const ship of ships) {
-		placeShipProcessor(ship);
-	}
+  domSelector.document
+    .selectFirstByClass("board-container")
+    .addEventListener("click", bodyClickHandler);
 })();
 
 (() => {
-	const cells = domSelector.document.selectAllByClass("cell");
-	for (const cell of cells) {
-		cellHoverProcessor(cell);
-	}
+  const changeDirectionBtns =
+    domSelector.document.selectAllByClass("direction-changer");
+  for (const button of changeDirectionBtns) {
+    button.addEventListener("click", changeDirectionHandler);
+  }
+})();
+
+(() => {
+  const ships = domSelector.document.selectAllByClass("ship-selector");
+  for (const ship of ships) {
+    placeShipProcessor(ship);
+  }
+})();
+
+(() => {
+  const cells = domSelector.document.selectAllByClass("cell");
+  for (const cell of cells) {
+    cellHoverProcessor(cell);
+  }
 })();

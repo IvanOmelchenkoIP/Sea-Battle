@@ -11,6 +11,6 @@ public class MenuController {
 
 	@GetMapping
 	public ModelAndView showMenuPage() {
-		return new ModelAndView("./html/menu.html");
+		return new ModelAndView("menu.html");
 	}
 }

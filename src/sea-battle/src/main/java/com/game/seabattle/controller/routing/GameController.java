@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.game.seabattle.httpbody.request.ConnectRequestBody;
+import com.game.seabattle.httpbody.request.GameIdRequestBody;
 import com.game.seabattle.httpbody.response.HttpResponseBody;
 import com.game.seabattle.model.player.BotPlayer;
 import com.game.seabattle.model.player.Player;
@@ -28,7 +29,7 @@ public class GameController {
 
 	@GetMapping
 	public ModelAndView showGameBoard() {
-		return new ModelAndView("./html/board.html");
+		return new ModelAndView("board.html");
 	}
 
 	@PostMapping("/init/singleplayer")
@@ -59,15 +60,14 @@ public class GameController {
 		return ResponseEntity.ok(new HttpResponseBody(body));
 	}
 
-	@PostMapping("/connect")
-	public ResponseEntity<?> connectToGame(@RequestBody ConnectRequestBody request) {
+	@PostMapping(path = "/join", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> joinGame(@RequestBody GameIdRequestBody request) {
 		String gameId = request.getGameId();
-		System.out.print("ok");
-		System.out.print(gameId);
 		Player player = new Player(UUID.randomUUID().toString());
 		try {
 			gameService.connectPlayer(gameId, player);
 		} catch (Exception exception) {
+			System.out.print(exception);
 			return new ResponseEntity<HttpResponseBody>(new HttpResponseBody(exception.getMessage()),
 					HttpStatus.BAD_REQUEST);
 		}
@@ -75,9 +75,9 @@ public class GameController {
 		return ResponseEntity.ok(new HttpResponseBody(body));
 	}
 
-	@DeleteMapping("/destroy")
-	public ResponseEntity<?> deleteGame(String id) {
-		gameService.destroyGame(id);
+	@DeleteMapping(path = "/destroy", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> deleteGame(@RequestBody GameIdRequestBody request) {
+		gameService.destroyGame(request.getGameId());
 		String body = "Game session cancelled!";
 		return ResponseEntity.ok(new HttpResponseBody(body));
 	}

@@ -6,12 +6,6 @@ public class WsRegisterShipsRequestBody {
 	private String gameId;
 	private String ships;
 	
-	public WsRegisterShipsRequestBody(String playerId, String gameId, String ships) {
-		this.playerId = playerId;
-		this.gameId = gameId;
-		this.ships = ships;
-	}
-	
 	public String getPlayerId() {
 		return playerId;
 	}

@@ -1,17 +1,20 @@
 "use strict";
 
 import fetchUtil from "../../utils/fetch/fetch-util.js";
-import initOnlineGameCallback from "./callbacks/online-success-callback.js";
+import onlineGameCallback from "./callbacks/online-success-callback.js";
 import joinErrorCallback from "./callbacks/join-error-callback.js";
 
-const joinOnlineGame = (gameId) => {
-	console.log(gameId);
-	if (!gameId) {
-		joinErrorCallback("Enter game id before joining!");
-		return;
-	}
-	const data = { gameId: gameId };
-	fetchUtil.post({route: "http://localhost:8080/game/connect", data: data, successCallback: initOnlineGameCallback, errorCallback: joinErrorCallback});
-}
+const joinOnlineGame = (id) => {
+  if (!id) {
+    joinErrorCallback("Enter game id before joining!");
+    return;
+  }
+  fetchUtil.post({
+    route: "http://localhost:8080/game/join",
+    data: { "gameId": id },
+    successCallback: onlineGameCallback,
+    errorCallback: joinErrorCallback,
+  });
+};
 
 export default joinOnlineGame;

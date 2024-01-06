@@ -7,19 +7,20 @@ import context from "../context/context.js";
 const connectWsClient = (gameId) => {
     const client = context.ws.client;
     if (client === null) showError(new Error("No connection exists!"));
-    client.connect({}, (frame) => {
-        client.subscribe("/topic/session" + gameId, (response) => {
+    client.onConnect = (frame) => {
+        client.subscribe("/topic/session/" + gameId, (response) => {
             showServerResponse(response);
         });
         client.onWebSocketError((error) => {
             showError(error);
             ws.client = null;
         });
-        client.onStompClient((frame) => {
+        client.onStompError((frame) => {
             showError(frame.headers["message"]);
             ws.client = null;
         });
-    })
+    };
+    client.activate();
 }
 
 export default connectWsClient;

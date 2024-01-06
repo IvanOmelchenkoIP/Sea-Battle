@@ -4,14 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Sea Battle</title>
-<link rel="stylesheet" href="../css/css-general.css">
-<link rel="stylesheet" href="../css/board.css">
-<script defer type="module" src="../js/listener/board-listeners.js"></script>
+<link rel="stylesheet" href="./css/css-general.css">
+<link rel="stylesheet" href="./css/board.css">
+<script defer type="module" src="./js/listener/board-listeners.js"></script>
 </head>
 
 <body>
 	<div class="body-container">
-		<div class="game-area">
+		<div class="game-area display-none">
 			<div class="menu-container-wrapper">
 				<div class="menu-container">
 					<div class="buttons-wrapper">
@@ -20,12 +20,12 @@
 						</button>
 					</div>
 					<div class="game-data-wrapper">
-						<div class="type-title-container">
-							<span class="game-type">Online Multiplayer Game</span>
+						<div class="menu-type-title-container">
+							<span></span>
 						</div>
 						<div class="game-id-container">
-							<button class="menu-id-copier" id="copy-game-id-menu">
-								<span>id</span>
+							<button class="menu-id-copyer id-copyer">
+								<span></span>
 							</button>
 						</div>
 					</div>
@@ -33,7 +33,164 @@
 			</div>
 			<div class="board-container">
 				<div class="board-side player-1">
-					<div class="game-board-wrapper">
+					<div class="game-board-wrapper display-none">
+						<div class="game-board">
+							<div class="game-grid">
+								<div class="cell y-0 x-0"></div>
+								<div class="cell y-0 x-1"></div>
+								<div class="cell y-0 x-2"></div>
+								<div class="cell y-0 x-3"></div>
+								<div class="cell y-0 x-4"></div>
+								<div class="cell y-0 x-5"></div>
+								<div class="cell y-0 x-6"></div>
+								<div class="cell y-0 x-7"></div>
+								<div class="cell y-0 x-8"></div>
+								<div class="cell y-0 x-9"></div>
+								<div class="cell y-1 x-0"></div>
+								<div class="cell y-1 x-1"></div>
+								<div class="cell y-1 x-2"></div>
+								<div class="cell y-1 x-3"></div>
+								<div class="cell y-1 x-4"></div>
+								<div class="cell y-1 x-5"></div>
+								<div class="cell y-1 x-6"></div>
+								<div class="cell y-1 x-7"></div>
+								<div class="cell y-1 x-8"></div>
+								<div class="cell y-1 x-9"></div>
+								<div class="cell y-2 x-0"></div>
+								<div class="cell y-2 x-1"></div>
+								<div class="cell y-2 x-2"></div>
+								<div class="cell y-2 x-3"></div>
+								<div class="cell y-2 x-4"></div>
+								<div class="cell y-2 x-5"></div>
+								<div class="cell y-2 x-6"></div>
+								<div class="cell y-2 x-7"></div>
+								<div class="cell y-2 x-8"></div>
+								<div class="cell y-2 x-9"></div>
+								<div class="cell y-3 x-0"></div>
+								<div class="cell y-3 x-1"></div>
+								<div class="cell y-3 x-2"></div>
+								<div class="cell y-3 x-3"></div>
+								<div class="cell y-3 x-4"></div>
+								<div class="cell y-3 x-5"></div>
+								<div class="cell y-3 x-6"></div>
+								<div class="cell y-3 x-7"></div>
+								<div class="cell y-3 x-8"></div>
+								<div class="cell y-3 x-9"></div>
+								<div class="cell y-4 x-0"></div>
+								<div class="cell y-4 x-1"></div>
+								<div class="cell y-4 x-2"></div>
+								<div class="cell y-4 x-3"></div>
+								<div class="cell y-4 x-4"></div>
+								<div class="cell y-4 x-5"></div>
+								<div class="cell y-4 x-6"></div>
+								<div class="cell y-4 x-7"></div>
+								<div class="cell y-4 x-8"></div>
+								<div class="cell y-4 x-9"></div>
+								<div class="cell y-5 x-0"></div>
+								<div class="cell y-5 x-1"></div>
+								<div class="cell y-5 x-2"></div>
+								<div class="cell y-5 x-3"></div>
+								<div class="cell y-5 x-4"></div>
+								<div class="cell y-5 x-5"></div>
+								<div class="cell y-5 x-6"></div>
+								<div class="cell y-5 x-7"></div>
+								<div class="cell y-5 x-8"></div>
+								<div class="cell y-5 x-9"></div>
+								<div class="cell y-6 x-0"></div>
+								<div class="cell y-6 x-1"></div>
+								<div class="cell y-6 x-2"></div>
+								<div class="cell y-6 x-3"></div>
+								<div class="cell y-6 x-4"></div>
+								<div class="cell y-6 x-5"></div>
+								<div class="cell y-6 x-6"></div>
+								<div class="cell y-6 x-7"></div>
+								<div class="cell y-6 x-8"></div>
+								<div class="cell y-6 x-9"></div>
+								<div class="cell y-7 x-0"></div>
+								<div class="cell y-7 x-1"></div>
+								<div class="cell y-7 x-2"></div>
+								<div class="cell y-7 x-3"></div>
+								<div class="cell y-7 x-4"></div>
+								<div class="cell y-7 x-5"></div>
+								<div class="cell y-7 x-6"></div>
+								<div class="cell y-7 x-7"></div>
+								<div class="cell y-7 x-8"></div>
+								<div class="cell y-7 x-9"></div>
+								<div class="cell y-8 x-0"></div>
+								<div class="cell y-8 x-1"></div>
+								<div class="cell y-8 x-2"></div>
+								<div class="cell y-8 x-3"></div>
+								<div class="cell y-8 x-4"></div>
+								<div class="cell y-8 x-5"></div>
+								<div class="cell y-8 x-6"></div>
+								<div class="cell y-8 x-7"></div>
+								<div class="cell y-8 x-8"></div>
+								<div class="cell y-8 x-9"></div>
+								<div class="cell y-9 x-0"></div>
+								<div class="cell y-9 x-1"></div>
+								<div class="cell y-9 x-2"></div>
+								<div class="cell y-9 x-3"></div>
+								<div class="cell y-9 x-4"></div>
+								<div class="cell y-9 x-5"></div>
+								<div class="cell y-9 x-6"></div>
+								<div class="cell y-9 x-7"></div>
+								<div class="cell y-9 x-8"></div>
+								<div class="cell y-9 x-9"></div>
+							</div>
+						</div>
+					</div>
+					<div class="ship-selection-wrapper display-none">
+						<div class="ship-selection">
+							<div class="ship-selection-wrapper">
+								<div class="ship-selector-wrapper">
+									<div class="ship-selector size-4 horizontal">
+										<div class="ship-cell 1"></div>
+										<div class="ship-cell 2"></div>
+										<div class="ship-cell 3"></div>
+										<div class="ship-cell 4"></div>
+									</div>
+									<div class="label-left">
+										<span>1</span>
+									</div>
+								</div>
+								<div class="ship-selector-wrapper">
+									<div class="ship-selector size-3 horizontal">
+										<div class="ship-cell 1"></div>
+										<div class="ship-cell 2"></div>
+										<div class="ship-cell 3"></div>
+									</div>
+									<div class="label-left">
+										<span>2</span>
+									</div>
+								</div>
+								<div class="ship-selector-wrapper">
+									<div class="ship-selector size-2 horizontal">
+										<div class="ship-cell 1"></div>
+										<div class="ship-cell 2"></div>
+									</div>
+									<div class="label-left">
+										<span>3</span>
+									</div>
+								</div>
+								<div class="ship-selector-wrapper">
+									<div class="ship-selector size-1 horizontal">
+										<div class="ship-cell 1"></div>
+									</div>
+									<div class="label-left">
+										<span>4</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="direction-changer-wrapper">
+							<button class="direction-changer">
+								<span>Change Direction</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="board-side player-2">
+					<div class="game-board-wrapper display-none">
 						<div class="game-board">
 							<div class="game-grid">
 								<div class="cell y-0 x-0"></div>
@@ -140,116 +297,7 @@
 						</div>
 					</div>
 
-				</div>
-				<div class="board-side player-2">
-					<div class="game-board-wrapper display-none">
-						<div class="game-board">
-							<div class="game-grid">
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-								<div class="cell"></div>
-							</div>
-						</div>
-					</div>
-
-					<div class="ship-selection-wrapper">
+					<div class="ship-selection-wrapper display-none">
 						<div class="ship-selection">
 							<div class="ship-selection-wrapper">
 								<div class="ship-selector-wrapper">
@@ -313,8 +361,8 @@
 					<div class="payload-title">
 						<span>Click on game id to copy</span>
 					</div>
-					<button class="game-id-btn" id="copy-game-id">
-						<span class="game-id">id</span>
+					<button class="wait-id-copyer id-copyer">
+						<span></span>
 					</button>
 				</div>
 				<div class="loader-wrapper">
@@ -327,7 +375,7 @@
 					</div>
 				</div>
 				<div class="message-button-wrapper">
-					<button class="message-area-button" id="cancel-game-button">
+					<button class="message-area-button" id="cancel-game">
 						<span>Cancel Game</span>
 					</button>
 				</div>
@@ -351,4 +399,5 @@
 		</div>
 	</div>
 </body>
+
 </html>

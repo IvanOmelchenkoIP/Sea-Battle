@@ -6,12 +6,6 @@ public class WsGameMoveRequestBody {
 	private String gameId;
 	private String coords;
 	
-	public WsGameMoveRequestBody(String playerId, String gameId, String coords) {
-		this.playerId = playerId;
-		this.gameId = gameId;
-		this.coords = coords;
-	}
-
 	public String getPlayerId() {
 		return playerId;
 	}
