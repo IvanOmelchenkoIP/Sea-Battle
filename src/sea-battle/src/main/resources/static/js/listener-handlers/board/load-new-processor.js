@@ -10,7 +10,6 @@ const loadNewProcessor = () => {
   context.ws.init();
   connectWsClient(gameId);
   context.shipPlacement.getNew();
-
   const gamemode = context.game.gamemode;
   const GAMEMODES = context.game.gamemodes;
   const menu = domSelector.document.selectFirstByClass("menu-container");
@@ -32,6 +31,8 @@ const loadNewProcessor = () => {
         gameArea,
         "board-side player-2"
       );
+      context.htmlCache.set("player1Side", player1Side);
+      context.htmlCache.set("player2Side", player2Side);
       domSelector
         .selectFirstByClass(player1Side, "ship-selection-wrapper")
         .classList.remove("display-none");

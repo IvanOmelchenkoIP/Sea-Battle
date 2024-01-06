@@ -75,7 +75,7 @@ public class GameController {
 		return ResponseEntity.ok(new HttpResponseBody(body));
 	}
 
-	@DeleteMapping(path = "/destroy", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@DeleteMapping(path = "/destroy", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<?> deleteGame(@RequestBody GameIdRequestBody request) {
 		gameService.destroyGame(request.getGameId());
 		String body = "Game session cancelled!";

@@ -7,4 +7,12 @@ public class Cell {
 	public Cell() {
 		state = CellStates.EMPTY;
 	}
+	
+	public void setState(CellStates state) {
+		this.state = state;
+	}
+	
+	public CellStates getState() {
+		return state;
+	}
 }

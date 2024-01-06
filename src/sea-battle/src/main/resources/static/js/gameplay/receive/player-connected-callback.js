@@ -18,6 +18,8 @@ const playerConnectedCallback = (message) => {
     gameArea,
     "board-side player-2"
   );
+  context.htmlCache.set("player1Side", player1Side);
+  context.htmlCache.set("player2Side", player2Side);
   domSelector
     .selectFirstByClass(player1Side, "game-board-wrapper")
     .classList.remove("display-none");

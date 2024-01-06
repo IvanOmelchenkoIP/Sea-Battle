@@ -2,8 +2,8 @@ package com.game.seabattle.httpbody.request.ws;
 
 public class WsRegisterShipsRequestBody {
 
-	private String playerId;
 	private String gameId;
+	private String playerId;
 	private String ships;
 	
 	public String getPlayerId() {

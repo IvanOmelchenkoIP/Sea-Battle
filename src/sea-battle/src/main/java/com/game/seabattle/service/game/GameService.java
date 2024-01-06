@@ -11,8 +11,8 @@ import com.game.seabattle.exception.GameInvalidException;
 import com.game.seabattle.model.game.Game;
 import com.game.seabattle.model.gameplay.board.Board;
 import com.game.seabattle.model.gameplay.ship.Ship;
+import com.game.seabattle.model.gameplay.ship.ShipsCollection;
 import com.game.seabattle.model.player.Player;
-import com.game.seabattle.service.gameplay.ShipsCollectionService;
 
 @Service
 public class GameService {
@@ -20,23 +20,26 @@ public class GameService {
 	@Autowired
 	private GamesInMemoryDBService db;
 	@Autowired
-	private ShipsCollectionService shipsService;
-	@Autowired 
+	private ShipsService shipsService;
+	@Autowired
 	private BoardService boardService;
 
 	public String newGame(Player player) {
 		Game game = new Game();
 		game.setPlayer1Board(new Board());
+		game.setPlayer1Ships(new ShipsCollection());
 		game.setPlayer1(player);
 		String id = db.addGame(game);
 		return id;
 	}
-	
+
 	public String newGame(Player player1, Player player2) {
 		Game game = new Game();
 		game.setPlayer1Board(new Board());
+		game.setPlayer1Ships(new ShipsCollection());
 		game.setPlayer1(player1);
 		game.setPlayer2Board(new Board());
+		game.setPlayer2Ships(new ShipsCollection());
 		game.setPlayer2(player2);
 		String id = db.addGame(game);
 		return id;
@@ -51,44 +54,75 @@ public class GameService {
 			throw new GameFullException("Another player has already joined the game!");
 		}
 		game.setPlayer2Board(new Board());
+		game.setPlayer2Ships(new ShipsCollection());
 		game.setPlayer2(player);
 	}
 
-	public void setShips(String id, ArrayList<Ship> player1Ships, ArrayList<Ship> player2Ships) {
-		Game game = db.findGame(id);
-		game.setPlayer1Ships(player1Ships);
-		game.setPlayer2Ships(player2Ships);
+	public void setShips(String gameId, String playerId, ShipsCollection ships) throws GameInvalidException {
+		Game game = db.findGame(gameId);
+		if (game == null) {
+			throw new GameInvalidException("Game with id " + gameId + " does not exist!");
+		}
+		if (game.getPlayer1().getId() == playerId) {
+			game.copyPlayer1Ships(ships);
+		} else {
+			game.copyPlayer2Ships(ships);
+		}
 	}
 
 	public Game getGame(String id) {
 		return db.findGame(id);
 	}
-	
+
 	public void destroyGame(String id) {
 		db.removeGame(id);
 	}
-	
-	/*public void makeMove(Point coords, Board board, ShipsCollection ships) {
-		Ship ship = shipsService.findHitShip(ships, coords);
-		if (ship != null) {
-			if (ship.isDestroyed()) {
-				ArrayList<Point> coordsList = shipsService.getAllCoords();
-				boardService.updateDestroyed(boardk coordsList);
-			} else {
-				boardService.updateHit(coords);
+
+	private Board processPlayerMove(Point coords, Board board, ShipsCollection shipsCollection) {
+		boolean isHit = false;
+		Ship destroyedShip = null;
+		Ship[] ships = shipsCollection.getShips();
+		System.out.println(ships);
+		for (Ship ship : ships) {
+			isHit = shipsService.checkAndUpdateHitShip(ship, coords);
+			if (isHit) {
+				if (ship.isDestroyed()) {
+					destroyedShip = ship;
+				}
+				break;
 			}
-		} else {
-			boardService.updateMissed(coords);
 		}
-	}*/
-	
-	public void makePlayer1Move(String id, Point coords) {
-		Game game = db.findGame(id);
-		//makeMove(coords, game.getPlayer1Board(), game.getPlayer1Ships());
+		return boardService.updateBoard(board, coords, isHit, destroyedShip);
 	}
 	
-	public void makePlayer2Move(String id, Point coords) {
-		Game game = db.findGame(id);
-		//makeMove(coords, game.getPlayer2Board(), game.getPlayer2Ships());
+	public Board makeMove(String gameId, String playerId, int x, int y) throws GameInvalidException {
+		Game game = db.findGame(gameId);
+		if (game == null) {
+			throw new GameInvalidException("Game with id " + gameId + " does not exist!");
+		}
+		Point coords = new Point(x, y);
+		if (game.getPlayer1().getId() == playerId) {
+			return processPlayerMove(coords, game.getPlayer2Board(), game.getPlayer2Ships());
+		} else {
+			return processPlayerMove(coords, game.getPlayer1Board(), game.getPlayer1Ships());
+		}
 	}
+	
+	public boolean checkVictory(String gameId, String playerId) throws GameInvalidException {
+		Game game = db.findGame(gameId);
+		if (game == null) {
+			throw new GameInvalidException("Game with id " + gameId + " does not exist!");
+		}
+		ShipsCollection shipsCollection;
+		if (game.getPlayer1().getId() == playerId) {
+			shipsCollection = game.getPlayer2Ships();
+		} else {
+			shipsCollection = game.getPlayer2Ships();
+		}
+		Ship[] ships = shipsCollection.getShips();
+		for (Ship ship : ships) {
+			if (!ship.isDestroyed()) return false;
+		}
+		return true;
+	}	
 }

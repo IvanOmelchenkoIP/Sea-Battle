@@ -1,24 +1,25 @@
 package com.game.seabattle.model.gameplay.ship;
 
+import com.game.seabattle.model.gameplay.ship.Ship.SHIP_TYPES;
 import com.game.seabattle.model.gameplay.ship.cell.ShipCell;
 
-public class LargeShip extends Ship {
+public class Boat extends Ship {
 
-	public LargeShip() {
-		super(SHIP_TYPES.LARGE);
+	public Boat() {
+		super(SHIP_TYPES.BOAT);
 	}
 	
-	public LargeShip(Ship shipToCopy) {
-		super(SHIP_TYPES.LARGE);
+	public Boat(Ship shipToCopy) {
+		super(SHIP_TYPES.BOAT);
 		ShipCell[] cellsToCopy = shipToCopy.getCells();
-		for (int i = 0; i < SHIP_TYPES.LARGE; i++) {
+		for (int i = 0; i < SHIP_TYPES.BOAT; i++) {
 			cells[i] = cellsToCopy[i];
 		}
 	}
 	
 	public void copy(Ship shipToCopy) {
 		ShipCell[] cellsToCopy = shipToCopy.getCells();
-		for (int i = 0; i < SHIP_TYPES.LARGE; i++) {
+		for (int i = 0; i < SHIP_TYPES.BOAT; i++) {
 			cells[i] = cellsToCopy[i];
 		}
 	}

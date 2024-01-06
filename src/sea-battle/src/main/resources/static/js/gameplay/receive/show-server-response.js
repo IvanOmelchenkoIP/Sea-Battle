@@ -1,33 +1,25 @@
 "use strict";
 
 import playerConnectedCallback from "./player-connected-callback.js";
-import player1BoardCallback from "./player1-board-callback.js";
-import player1ShipsCallback from "./player1-ships-callback.js";
-import player2BoardCallback from "./player2-board-callback.js";
-import player2ShipsCallback from "./player2-ships-callback.js";
+import shipsPlacedCallback from "./ships-placed-callback.js";
+import moveMadeCallback from "./move-made-callback.js";
 
 const MESSAGE_TYPES = {
   player_connected: (response) => {
     playerConnectedCallback(response);
   },
-  player1_board: (response) => {
-    player1BoardCallback(response);
+  ships_placed: (response) => {
+    shipsPlacedCallback(response);
   },
-  player2_board: (response) => {
-    player2BoardCallback(response);
-  },
-  player1_ships: (response) => {
-    player1ShipsCallback(response);
-  },
-  player2_ships: (response) => {
-    player2ShipsCallback(response);
+  move_made: (response) => {
+    moveMadeCallback(response);
   },
 };
 
 const showServerResponse = (response) => {
   const message = JSON.parse(JSON.parse(response.body).message);
   const messageType = message["response_type"];
-  console.log(messageType);
+  console.log(message);
   MESSAGE_TYPES[messageType](message);
 };
 

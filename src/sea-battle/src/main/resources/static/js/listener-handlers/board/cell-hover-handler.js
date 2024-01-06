@@ -3,6 +3,7 @@
 import context from "../../context/context.js";
 import readyShipsProcessor from "../../gameplay/ships/ready-ships-processor.js";
 import domSelector from "../../utils/html-utils/html-utils.js";
+import moveProcessor from "../../gameplay/ships/move-processor.js";
 
 const cellHoverProcessor = (cell) => {
   const board = cell.parentElement;
@@ -78,6 +79,20 @@ const cellHoverProcessor = (cell) => {
       const highlighted = highlightCoordsCells(coords);
       if (!highlighted) shipContext.shipParams.coords = [];
       else shipContext.shipParams.coords = coords;
+      return;
+    }
+    const player1 =
+      context.game.player1 != null &&
+      context.game.turn == context.game.turns.PLAYER_1;
+    const player2 =
+      context.game.player2 != null &&
+      context.game.turn == context.game.turns.PLAYER_2;
+    if (context.game.in_progress && (player1 || player2)) {
+      const personal = board.classList.contains("personal");
+      const locked = board.classList.contains("locked");
+      if (!personal && !locked) {
+        cell.classList.add("highlighted");
+      }
     }
   };
 
@@ -101,6 +116,20 @@ const cellHoverProcessor = (cell) => {
     if (shipContext.shipParams.isSelected) {
       const coords = shipContext.shipParams.coords;
       dehighlightCells(coords);
+      return;
+    }
+    const player1 =
+      context.game.player1 != null &&
+      context.game.turn == context.game.turns.PLAYER_1;
+    const player2 =
+      context.game.player2 != null &&
+      context.game.turn == context.game.turns.PLAYER_2;
+    if (context.game.in_progress && (player1 || player2)) {
+      const personal = board.classList.contains("personal");
+      const locked = board.classList.contains("locked");
+      if (!personal && !locked) {
+        cell.classList.remove("highlighted");
+      }
     }
   };
 
@@ -118,6 +147,7 @@ const cellHoverProcessor = (cell) => {
       const classX = "x-" + x;
       const cell = domSelector.selectFirstByClass(board, classY + " " + classX);
       if (!cell) return;
+      cell.classList.remove("blocked");
       if (cell.classList.length < 4) cell.classList.add("blocked");
     };
 
@@ -142,6 +172,7 @@ const cellHoverProcessor = (cell) => {
             classY + " " + classX
           );
           cell.classList.remove("blocked");
+          cell.classList.remove("highlighted");
           cell.classList.add("ship");
         }
         shipContext.addShipCoords(coords);
@@ -162,6 +193,22 @@ const cellHoverProcessor = (cell) => {
     const shipContext = context.shipPlacement.context;
     if (shipContext.shipParams.isSelected) {
       handleShipPlacementClick(shipContext);
+      return;
+    }
+    const player1 =
+      context.game.player1 != null &&
+      context.game.turn == context.game.turns.PLAYER_1;
+    const player2 =
+      context.game.player2 != null &&
+      context.game.turn == context.game.turns.PLAYER_2;
+    if (context.game.in_progress && (player1 || player2)) {
+
+      const personal = board.classList.contains("personal");
+      const locked = board.classList.contains("locked");
+      if (!personal && !locked) {
+        cell.classList.remove("highlighted");
+        moveProcessor(cell);
+      }
     }
   };
 

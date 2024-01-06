@@ -2,9 +2,10 @@ package com.game.seabattle.httpbody.request.ws;
 
 public class WsGameMoveRequestBody {
 	
-	private String playerId;
 	private String gameId;
-	private String coords;
+	private String playerId;
+	private String coordX;
+	private String coordY;
 	
 	public String getPlayerId() {
 		return playerId;
@@ -22,12 +23,20 @@ public class WsGameMoveRequestBody {
 		this.gameId = gameId;
 	}
 
-	public String getCoords() {
-		return coords;
+	public String getCoordX() {
+		return coordX;
 	}
 
-	public void setCoords(String coords) {
-		this.coords = coords;
+	public void setCoordX(String coordX) {
+		this.coordX = coordX;
+	}
+
+	public String getCoordY() {
+		return coordY;
+	}
+
+	public void setCoordY(String coordY) {
+		this.coordY = coordY;
 	}	
 
 }

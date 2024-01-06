@@ -83,20 +83,30 @@
 	background: #449DD1
 }
 
+.cell.miss {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cell.miss:after {
+	content: '\2022';
+	color: #000;
+}
+
 .cell.damaged {
-	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cell.damaged:after {
+	content: '\274c';
+	color: #000;
 }
 
 .cell.destroyed {
-	
-}
-
-.cell.ship.damaged {
-	
-}
-
-.cell.ship.destroyed {
-	
+	background: #000;	
 }
 
 /*-----------------------*/

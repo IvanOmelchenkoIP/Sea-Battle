@@ -36,7 +36,6 @@ class ShipPlacementContextClass {
 const shipPlacementContext = {
   context: new ShipPlacementContextClass(),
   getNew: () => {
-    //shipPlacementContext.clear();
     shipPlacementContext.context = new ShipPlacementContextClass();
   },
   clear: () => {

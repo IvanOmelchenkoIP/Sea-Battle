@@ -7,8 +7,9 @@ const gamemodes = {
 };
 
 const turns = {
-  PLAYER_1: 0,
-  PLAYER_2: 1,
+  PLAYER_1: 1,
+  PLAYER_2: 2,
+  NONE: -100,
 };
 
 const game = {
@@ -19,7 +20,9 @@ const game = {
   player2: null,
   gamemode: null,
   in_progress: false,
-  turn: null,
+  turn: turns.NONE,
+  player1_ready: false,
+  player2_ready: false,
   BOARD_SIZE: 10,
   clear: () => {
     game.gameId = null;
