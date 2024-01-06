@@ -1,7 +1,7 @@
 "use strict";
 
 import playerConnectedCallback from "./player-connected-callback.js";
-import shipsPlacedCallback from "./ships-placed-callback.js";
+import shipsPlacedCallback from "./callbacks/ships-placed-callback.js";
 import moveMadeCallback from "./move-made-callback.js";
 
 const MESSAGE_TYPES = {

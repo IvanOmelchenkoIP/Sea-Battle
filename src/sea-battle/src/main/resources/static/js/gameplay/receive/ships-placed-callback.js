@@ -1,7 +1,7 @@
 "use strict";
 
-import context from "../../context/context.js";
-import domSelector from "../../utils/html-utils/html-utils.js";
+import context from "../../../context/context.js";
+import domSelector from "../../../utils/html-utils/html-utils.js";
 
 const shipsPlacedCallback = (message) => {
   const player1Id = context.game.player1;
